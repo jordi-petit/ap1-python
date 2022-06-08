@@ -34,13 +34,11 @@
 
 9.  Cerca, fusió i ordenació
 
-10.  Matrius
+10.  Matrius i estructures
 
-11.  Diccionaris, conjunts i estructures
+11.  Diccionaris, conjunts
 
 12.  C++
 
 13.  Aplicacions 
-
-14.  Aplicacions 
 
