@@ -12,6 +12,29 @@ def factorial(n: int) -> int:
         return n * factorial(n - 1)
 ```
 
+### Suma de dígits 
+
+```python
+def suma_dígits(n: int) -> int:
+    """donat un natural retorna la suma dels seus dígits"""
+    if n == 0:
+        return 0
+    else:
+        return n % 10 + suma_dígits(n // 10)
+```
+
+
+### Arrel digital
+
+```python
+def arrel_digital(n: int) -> int:
+    """donat un natural retorna la seva arrel digital"""
+    if n < 10:
+        return n
+    else:
+        return arrel_digital(suma_dígits(n))
+```
+
 
 ### Escriure n en base b
 
