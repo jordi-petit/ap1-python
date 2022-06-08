@@ -136,6 +136,8 @@ print(x)
 ** potència
 ```
 
+Compte: el `/` és la divisió real i de moment no fem servir reals.
+
 ```pycon
 >>> 2 + 3
 5
