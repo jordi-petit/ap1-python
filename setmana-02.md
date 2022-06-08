@@ -14,7 +14,7 @@ while i < n:
     i = i + 1
 ```
 
-## Escriure els nombres senars de 1..n
+### Escriure els nombres senars de 1..n
 
 ```python
 n = 13
@@ -25,7 +25,7 @@ while i < n:
     i = i + 2
 ```
 
-## Escriure els nombres n..1
+### Escriure els nombres n..1
 
 ```python
 n = 13
@@ -35,7 +35,7 @@ while n >= 1:
     n = n - 1
 ```
 
-## Pintar un quadrat
+### Pintar un quadrat
 
 ```python
 from turtle import *
@@ -47,7 +47,7 @@ while i <= 4:
     i = i + 1
 ```
 
-## Pintar un polígon regular
+### Pintar un polígon regular
 
 ```python
 from turtle import *
@@ -62,7 +62,7 @@ while i <= n:
     i = i + 1
 ```
 
-## Factorial: calcular n! 
+### Factorial: calcular n! 
 
 ```python
 from yogi import *
@@ -76,7 +76,7 @@ while i <= n:
 print(f)
 ```
 
-## Escriure tots els divisors de n (fins a n)
+### Escriure tots els divisors de n (fins a n)
 
 ```python
 from yogi import *
@@ -89,7 +89,7 @@ while d <= n:
     d = d + 1
 ```
 
-## Escriure tots els divisors de n (fins a l'arrel)
+### Escriure tots els divisors de n (fins a l'arrel)
 
 ```python
 from yogi import *
@@ -107,7 +107,7 @@ if d * d == n:
 ⏰ Veure la diferència de temps per un n gran
 
 
-## Nombre de dígits d'un nombre
+### Nombre de dígits d'un nombre
 
 ```python
 from yogi import *
@@ -123,7 +123,7 @@ else:
 print(d)
 ```
 
-## Suma dels dígits d'un nombre
+### Suma dels dígits d'un nombre
 
 ```python
 from yogi import *
@@ -136,7 +136,9 @@ while n != 0:
 print(s)
 ```
 
-## Taules de multiplicar
+## Bucles dins de bucles
+
+### Taules de multiplicar
 
 ```python
 i = 0
@@ -149,7 +151,7 @@ while i <= 10:
     print()
 ```
 
-## Pintar n quadrats rotats 
+### Pintar n quadrats rotats 
 
 ```python
 from turtle import *
@@ -166,12 +168,12 @@ while i <= n:
     right(360 / n)
 ```
 
-# Màxim comú divisor
+## Màxim comú divisor
 
-## Màxim comú divisor (definició)
+### Màxim comú divisor (definició)
 
 ```python
-from yogi import read
+from yogi import *
 
 x = read(int)
 y = read(int)
@@ -181,15 +183,15 @@ while not (x%d == 0 and y%d == 0):
 print(d)
 ```
 
-Lleis de De Morgan
+### Lleis de De Morgan
 
 ```
-not (A and B)  = not A or  nor B
-not (A or  B)  = not A and nor B
+not (A and B)  = (not A) or  (not B)
+not (A or  B)  = (not A) and (not B)
 ```
 
 ```python
-from yogi import read
+from yogi import *
 
 x = read(int)
 y = read(int)
@@ -199,10 +201,10 @@ while x%d != 0 or y%d != 0:
 print(d)
 ```
 
-## Màxim comú divisor (euclides amb restes)
+### Màxim comú divisor (euclides amb restes)
 
 ```python
-from yogi import read
+from yogi import *
 
 x = read(int)
 y = read(int)
@@ -214,10 +216,10 @@ while x != y
 print(x)
 ```
 
-## Màxim comú divisor (Euclides amb mòduls)
+### Màxim comú divisor (Euclides amb mòduls)
 
 ```python
-from yogi import read
+from yogi import *
 
 x = read(int)
 y = read(int)
@@ -228,9 +230,9 @@ while y != 0:
 print(x)
 ```
 
-# Bucle for-range
+## Bucle for-range
 
-## Escriure nombres de 1..n
+### Escriure nombres de 1..n
 
 ```python
 n = 13
@@ -238,7 +240,7 @@ for i in range(n):
     print(i)
 ```
 
-## Escriure nombres senars de 1..n
+### Escriure nombres senars de 1..n
 
 ```python
 n = 13
@@ -246,7 +248,7 @@ for i in range(n, 2):
     print(i)
 ```
 
-## Escriure nombres de n..1
+### Escriure nombres de n..1
 
 ```python
 n = 13
@@ -254,11 +256,11 @@ for i in range(n, 0, -1):
     print(i)
 ```
 
-## Range
+### Range
 
 ```pycon
 >>> range(10)
-range(0, 10)
+range(0, 10)  🥲
 >>> list(range(10))
 [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 >>> list(range(3, 10))
@@ -267,10 +269,10 @@ range(0, 10)
 [3, 5, 7, 9]
 ```
 
-## Factorial: calcular n! 
+### Factorial: calcular n! 
 
 ```python
-from yogi import read
+from yogi import *
 
 x = read(int)
 f = 1
@@ -279,10 +281,10 @@ for i in range(2, n + 1):
 print(f)
 ```
 
-## Pintar un triangle
+### Pintar un triangle de rodones
 
 ```python
-from yogi import read
+from yogi import *
 
 n = read(int)
 for i in range(1, n + 1):
@@ -291,7 +293,7 @@ for i in range(1, n + 1):
     print()
 ```
 
-Repeticions de textos:
+### Repeticions de textos
 
 ```pycon
 >>> 'A' * 5
@@ -304,9 +306,10 @@ Repeticions de textos:
 ''
 ```
 
+### Pintar un triangle de rodones amb repeticions de textos
 
 ```python
-from yogi import read
+from yogi import *
 
 n = read(int)
 for i in range(1, n + 1):

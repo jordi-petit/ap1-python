@@ -1,13 +1,15 @@
 # 01 · Primers programes
 
-## Programa que escriu Hola
+## Primers programes
+
+### Programa que escriu Hola
 
 ```python
 # programa que escriu Hola
 print('Hola!')
 ```
 
-## Programa que escriu Hola i Adéu
+### Programa que escriu Hola i Adéu
 
 ```python
 # programa que escriu Hola i Adéu
@@ -15,7 +17,7 @@ print('Hola!')
 print('Adéu!')
 ```
 
-## Programa que pinta un triangle amb la tortuga
+### Programa que pinta un triangle amb la tortuga
 
 ```python
 import turtle
@@ -29,7 +31,7 @@ turtle.done()  # espera que es tanqui la finestra
 ```
 
 
-## Programa que pinta un triangle amb mida variable
+### Programa que pinta un triangle amb mida variable
 
 ```python
 import turtle
@@ -43,7 +45,7 @@ turtle.forward(mida)
 turtle.done()  
 ```
 
-## Programa que pinta un 8 amb la tortuga
+### Programa que pinta un 8 amb la tortuga
 
 ```python
 from turtle import *
@@ -55,7 +57,7 @@ circle(radi)
 done()
 ```
 
-## Programa que llegeix un nom i saluda
+### Programa que llegeix un nom i saluda
 
 ```shell
 pip3 install yogi
@@ -69,7 +71,7 @@ nom = read(str)
 print('Hola', nom)
 ```
 
-## Producte de dos nombres
+### Producte de dos nombres
 
 ```python
 from yogi import *
@@ -94,7 +96,9 @@ from yogi import *
 print(read(int) * read(int))
 ```
 
-## Màxim de dos valors
+## Condicional
+
+### Màxim de dos valors
 
 ```python
 from yogi import *
@@ -108,7 +112,7 @@ else:
 print(m)
 ```
 
-## Valor absolut
+### Valor absolut
 
 ```python
 from yogi import *
@@ -119,9 +123,9 @@ if x < 0:
 print(x)
 ```
 
-# T12 Expressions i assignacions
+## Expressions i assignacions
 
-## Operadors aritmètics
+### Operadors aritmètics
 
 ```
 + suma
@@ -160,7 +164,7 @@ Prioritat: com és habitual en matemàtiques.
 14
 ```
 
-## Descomposició horària
+### Descomposició horària
 
 A partir d'un nombre natural `n` amb un cert temps en segons, calcular tres nombres `h`, `m` i `s` amb el mateix temps expressat en hores, minuts i segons.
 
@@ -174,7 +178,29 @@ s = n % 60
 print(h, m, s)
 ```
 
-## Incrementar
+
+### Intercanvi
+
+```pycon
+>>> a = 2
+>>> b = 3
+>>> a = b
+>>> b = a ❌
+```
+
+```pycon
+>>> a = 2
+>>> b = 3
+>>> c = a
+>>> a = b
+>>> b = c
+>>> a
+3
+>>> b
+2
+```
+
+### Increment
 
 ```pycon
 >>> i = 2
@@ -185,18 +211,7 @@ print(h, m, s)
 3
 ```
 
-## Doblar
-
-```pycon
->>> j = 4
->>> j
-4
->>> j = j * 2
->>> j
-8
-```
-
-## Operadors relacionals
+### Operadors relacionals
 
 ```
 ==
@@ -224,7 +239,7 @@ True
 False
 ```
 
-## Operadors lògics
+### Operadors lògics
 
 ```
 not 
@@ -252,14 +267,13 @@ False
 >>> x > y and y > z
 False
 
-# això no sol funcionar en altres LPs
->>> x <= y <= z    
+>>> x <= y <= z    # vol dir x <= y and y <= z
 True
 >>> x == y <= z    
 False
 ```
 
-## Màxim de tres nombres
+### Màxim de tres nombres
 
 ```python
 from yogi import *
@@ -276,7 +290,7 @@ else:
 print(c)
 ```
 
-## Sumar un segon a una hora 
+### Sumar un segon a una hora 
 
 ```python
 from yogi import *
@@ -294,25 +308,4 @@ if s == 60:
         if h == 24:
             h = 0
 print(h, m, s)
-```
-
-## Intercanvi
-
-```pycon
->>> a = 2
->>> b = 3
->>> a = b
->>> b = a ❌
-```
-
-```pycon
->>> a = 2
->>> b = 3
->>> c = a
->>> a = b
->>> b = c
->>> a
-3
->>> b
-2
 ```
