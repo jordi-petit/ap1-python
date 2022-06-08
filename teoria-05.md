@@ -135,7 +135,7 @@ def conté(paraula: str) -> Bool:
 
 ## Recorreguts i cerques
 
-## Finestra d'alguns elements
+# Finestres
 
 ### Comptar nombre de paraules consecutides repetides
 
@@ -164,4 +164,26 @@ while c is not None:
         p = p + 1
     a, b, c = b, c, scan(float)
 print(p)
+```
+
+# Altres exemples
+
+### Longest repeated subsequence
+
+We want to calculate the length of the longest
+sequence of repetitions of the first string.
+
+```python
+first = read(str)
+length = 1  # Length of the current subsequence
+longest = 1 # Length of the longest subsequence
+current = scan(str)
+while current is not None:
+    if first != current:
+        length = 0
+    else:
+        length = length + 1
+        longest = max(longest, length)
+    current = scan(str)
+print(longest)
 ```

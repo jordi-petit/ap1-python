@@ -21,8 +21,26 @@
 
     - [Teoria](teoria-04.md)
 
-4.  Seqüencies
+5.  Seqüencies
 
     - [Teoria](teoria-05.md)
     - Laboratori: redireccions, cmp, diff
+
+6.  C++
+
+7.  Examen Parcial
+
+8.  Llistes 
+
+9.  Cerca, fusió i ordenació
+
+10.  Matrius
+
+11.  Diccionaris, conjunts i estructures
+
+12.  C++
+
+13.  Aplicacions 
+
+14.  Aplicacions 
 
