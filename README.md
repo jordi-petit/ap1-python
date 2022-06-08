@@ -6,6 +6,7 @@
 1. Primers programes 
 
     - [Teoria](teoria-01.md)
+    - Laboratori: Jutge, install yogi, print(sep=, end=), etc (molt d'etc!)
 
 2. Bucles 
 
@@ -14,3 +15,9 @@
 3.  Subprogrames i tipus 
 
     - [Teoria](teoria-03.md)
+    - Laboratori: mypy 
+
+4.  Recursivitat
+
+    - [Teoria](teoria-04.md)
+

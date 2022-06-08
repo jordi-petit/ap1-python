@@ -289,7 +289,7 @@ from yogi import *
 n = read(int)
 for i in range(1, n + 1):
     for j in range(i):
-        print('O', end='')
+        print('🟣', end='')
     print()
 ```
 
@@ -306,12 +306,12 @@ for i in range(1, n + 1):
 ''
 ```
 
-### Pintar un triangle de rodones amb repeticions de textos
+### Pintar un triangle de smileys amb repeticions de textos
 
 ```python
 from yogi import *
 
 n = read(int)
 for i in range(1, n + 1):
-    print('O' * i)
+    print('😀' * i)
 ```

@@ -12,9 +12,9 @@ print('Hola!')
 ### Programa que escriu Hola i Adéu
 
 ```python
-# programa que escriu Hola i Adéu
+# programa que escriu Hola i Adéu (amb una emoticona)
 print('Hola!')
-print('Adéu!')
+print('👋 Adéu!')
 ```
 
 ### Programa que pinta un triangle amb la tortuga
