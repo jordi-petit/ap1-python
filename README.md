@@ -21,3 +21,8 @@
 
     - [Teoria](teoria-04.md)
 
+4.  Seqüencies
+
+    - [Teoria](teoria-05.md)
+    - Laboratori: redireccions, cmp, diff
+

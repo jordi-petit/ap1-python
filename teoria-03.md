@@ -90,6 +90,7 @@ print(es_primer(100000007))
 
 ⏰ Comparació de temps (100000007 és primer)
 
+
 ## Tipus
 
 1. Tipus bàsics: int, float, bool, str
@@ -209,3 +210,61 @@ def pintar_quadrat(mida: int) -> None:
     pintar_polígon_regular(mida, 4)
 ```
 
+## Funcions que retornen més d'un valor
+
+Algunes vegades ens calen funcions que retornen més d'un valor: tuples.
+
+### Descomposició horària
+
+```python
+def descomposió_horària(n: int) -> tuple[int, int, int]:
+    h = n // 3600
+    m = (n // 60) % 60
+    s = n % 60
+    return h, m, s
+
+# desempaquetar el resultat és fàcil:
+hh, mm, ss = descomposió_horària(4376)
+```
+
+
+### Sumar un segon a una hora
+
+```python
+def sumar_un_segon(h: int, m: int, s: int) -> tuple[int, int, int]:
+    s = s + 1
+    if s == 60:
+        s = 0
+        m = m + 1
+        if m == 60:
+            m = 0
+            h = h + 1
+            if h == 24:
+                h = 0
+    return h, m, s
+
+# i ara ja es pot instroduir l'assignació múltiple:
+h, m, s = 23, 59, 59
+h, m, s = sumar_un_segon(h, m, s)
+print(h, m, s)
+```
+
+## Assignació múltiple
+
+```pycon
+>>> a, b = 1, 2
+>>> a
+1
+>>> b
+2
+>>> x, y = a, b
+>>> x
+1
+>>> y
+2
+>>> y, x = x, y
+>>> x
+2
+>>> y
+1
+```
