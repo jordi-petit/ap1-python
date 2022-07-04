@@ -140,6 +140,86 @@ while w is not None:
     else:
         d[w] += 1
     w = scan(str)
+for w in sorted(d):
+    print(w, d[w])
+```
+
+
+```python
+d: dict[str, int] = {}
+w = scan(str)
+while w is not None:
+    d[w] =  d.get(w, 0) + 1   # valor per quan clau no hi és
+    w = scan(str)
 for w in sorted(d.keys()):
     print(w, d[w])
 ```
+
+
+
+## Diccionaris per comprensió
+
+```pycon
+>>>  {n: n*n for n in range(1, 6)}
+{1: 1, 2: 4, 3: 9, 4: 16, 5: 25}
+>>> {n: n*n for n in range(1, 6) if n*n % 2 == 0}
+{2: 4, 4: 16}
+>>> d = {1:2, 2:3, 3:4}
+>>> {v:k for k,v in d.items()}
+{2: 1, 3: 2, 4: 3}
+```
+
+## Collatz
+
+https://projecteuler.net/problem=14
+
+```python
+import yogi  # sinó, ens quedarem sense espai per la pila
+
+
+def next(n: int) -> int:
+    if n % 2 == 0:
+        return n // 2  
+    else:
+        return 3 * n + 1
+
+def update_lengths(lengths: dict[int, int], n: int) -> None:
+    if n not in lengths:
+        nxt = next(n)
+        update_lengths(lengths, nxt)
+        lengths[n] = 1 + lengths[nxt]
+
+def solve(M:int) -> int:
+    lengths = {1: 1}
+    m = 1
+    for i in range(2, M + 1):
+        update_lengths(lengths, i)
+        if lengths[i] > lengths[m]:
+            m = i
+    return m
+
+
+print(solve(1000000))  # hauria d'escriure 837799
+```
+
+## Eficiència
+
+Potser caldria trobar alguna manera de reflectir l'eficiència de diccionaris i conjunts.
+
+⏰ Per exemple, mesurar la diferència de temps entre
+
+```python
+n = valor gros
+L = list(range(n))
+print(x in L)
+```
+
+vs 
+
+```python
+n = valor gros
+s = set(range(n))
+print(x in s)
+```
+
+
