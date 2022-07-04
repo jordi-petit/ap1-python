@@ -32,6 +32,8 @@
 
 8.  Llistes 
 
+    - [Teoria](teoria-08.md)
+
 10.  Matrius i estructures
 
 11.  Diccionaris i conjunts
