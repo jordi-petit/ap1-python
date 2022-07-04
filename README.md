@@ -36,6 +36,8 @@
 
 10.  Matrius i estructures
 
+    - [Teoria](teoria-09.md)
+
 11.  Diccionaris i conjunts
 
 12.  C++
