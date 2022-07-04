@@ -38,7 +38,9 @@
 
     - [Teoria](teoria-09.md)
 
-1.  Diccionaris i conjunts
+1.  Conjunts i diccionaris
+
+    - [Teoria](teoria-10.md)
 
 1.  C++
 
