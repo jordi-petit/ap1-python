@@ -6,25 +6,25 @@
 1. Primers programes 
 
     - [Teoria](teoria-01.md)
-    - Laboratori: Jutge, install yogi, print(sep=, end=), etc (molt d'etc!)
+    - Laboratori: Jutge, `install yogi`, `print(sep=, end=)`, etc (molt d'etc!)
 
 2. Bucles 
 
     - [Teoria](teoria-02.md)
 
-3.  Subprogrames i tipus 
+3.  Funcions, accions i tipus 
 
     - [Teoria](teoria-03.md)
-    - Laboratori: mypy 
+    - Laboratori: `mypy` 
 
-4.  Recursivitat
+4.  Recorreguts i cerques
 
     - [Teoria](teoria-04.md)
+    - Laboratori: redireccions, `cmp`, `diff`
 
-5.  Seqüencies
+5.  Recursivitat
 
     - [Teoria](teoria-05.md)
-    - Laboratori: redireccions, cmp, diff
 
 6.  C++
 
@@ -32,11 +32,9 @@
 
 8.  Llistes 
 
-9.  Cerca, fusió i ordenació
-
 10.  Matrius i estructures
 
-11.  Diccionaris, conjunts
+11.  Diccionaris i conjunts
 
 12.  C++
 
