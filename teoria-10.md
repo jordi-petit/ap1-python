@@ -1,5 +1,5 @@
 
-# 09a · Conjunts
+# 10a · Conjunts
 
 Els conjunts de Python permeten enmagatzemar conjunts finits d'elements. L'ordre i les repeticions no importen.
 
@@ -76,3 +76,70 @@ for w in sorted(s):
     print(w)
 ```
 
+
+
+# 10b · Diccionaris
+
+
+Els conjunts de Python permeten enmagatzemar valors associats a claus de forma eficient.
+
+
+## Exemple
+
+```pycon
+>>> d = {'gat': 'cat', 'gos': 'dog', 'tortuga': 'turtle'}
+>>> d
+{'gat': 'cat', 'gos': 'dog', 'tortuga': 'turtle'}
+>>> len(d)
+3
+>>> 'gos' in d
+True
+>>> 'llop' in d
+False
+>>> 'dog' in d
+False
+>>> d['gos']
+'dog'
+>>> d['gos'] = 'hound'
+>>> d
+{'gat': 'cat', 'gos': 'hound', 'tortuga': 'turtle'}
+>>> d['llop'] = 'wolf'
+>>> d
+{'gat': 'cat', 'gos': 'hound', 'tortuga': 'turtle', 'llop': 'wolf'}
+>>> d['guineu']
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+KeyError: 'guineu'
+>>> list(d.keys())
+['gat', 'gos', 'tortuga', 'llop']
+>>> list(d.values())
+['cat', 'hound', 'turtle', 'wolf']
+>>> list(d.items())
+[('gat', 'cat'), ('gos', 'hound'), ('tortuga', 'turtle'), ('llop', 'wolf')]
+>>> for k in d: print(k, d[k])
+gat cat
+gos hound
+tortuga turtle
+llop wolf
+>>> for k,v in d.items(): print(k, v)
+gat cat
+gos hound
+tortuga turtle
+llop wolf
+```
+
+
+## Comptar totes les paraules úniques d'un fitxer
+
+```python
+d: dict[str, int] = {}
+w = scan(str)
+while w is not None:
+    if w not in d:
+        d[w] = 1
+    else:
+        d[w] += 1
+    w = scan(str)
+for w in sorted(d.keys()):
+    print(w, d[w])
+```
