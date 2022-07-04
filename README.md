@@ -8,39 +8,39 @@
     - [Teoria](teoria-01.md)
     - Laboratori: Jutge, `install yogi`, `print(sep=, end=)`, etc (molt d'etc!)
 
-2. Bucles 
+1. Bucles 
 
     - [Teoria](teoria-02.md)
 
-3.  Funcions, accions i tipus 
+1.  Funcions, accions i tipus 
 
     - [Teoria](teoria-03.md)
     - Laboratori: `mypy` 
 
-4.  Recorreguts i cerques
+1.  Recorreguts i cerques
 
     - [Teoria](teoria-04.md)
     - Laboratori: redireccions, `cmp`, `diff`
 
-5.  Recursivitat
+1.  Recursivitat
 
     - [Teoria](teoria-05.md)
 
-6.  C++
+1.  C++
 
-7.  Examen Parcial
+1.  Examen Parcial
 
-8.  Llistes 
+1.  Llistes 
 
     - [Teoria](teoria-08.md)
 
-10.  Matrius i estructures
+1.  Matrius i estructures
 
     - [Teoria](teoria-09.md)
 
-11.  Diccionaris i conjunts
+1.  Diccionaris i conjunts
 
-12.  C++
+1.  C++
 
-13.  Aplicacions 
+1.  Aplicacions 
 
