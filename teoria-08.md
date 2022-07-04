@@ -319,6 +319,23 @@ f2(b)
 print(b)        # escriu [1, 2, 3, 4]
 ```
 
+
+
+
+## Split
+
+El mètode `split` dels textos és molt útil: trenca el text en una llista de textos utilitzant un separador (per paraules per defecte):
+
+```pycon
+>>> 'es quan dormo que hi veig clar'.split()
+['es', 'quan', 'dormo', 'que', 'hi', 'veig', 'clar']
+>>> '   es   quan    dormo que hi veig   clar '.split()
+['es', 'quan', 'dormo', 'que', 'hi', 'veig', 'clar']
+>>> '30/11/1971'.split('/')
+['30', '11', '1971']
+```
+
+
 ## Cerca lineal
 
 ```python
