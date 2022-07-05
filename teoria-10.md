@@ -90,8 +90,9 @@ for w in sorted(s):
 {32, 1, 2, 64, 4, 128, 256, 8, 16}
 >>> {str(i) for i in {2,3,4,5,6} if i % 2 == 0}
 {'4', '6', '2'}
->>> {(m, n) for n in range(2) for m in range(3)}
-{(0, 1), (2, 1), (0, 0), (1, 1), (2, 0), (1, 0)}
+>>> n = 20
+>>> {(a, b, c) for a in range(1, n + 1) for b in range(a, n + 1) for c in range(b, n + 1) if a**2 + b**2 == c**2}
+{(6, 8, 10), (3, 4, 5), (8, 15, 17), (9, 12, 15), (5, 12, 13), (12, 16, 20)}
 ```
 
 
@@ -99,7 +100,7 @@ for w in sorted(s):
 # 10b · Diccionaris
 
 
-Els diccionaris de Python permeten enmagatzemar valors associats a claus de forma eficient.
+Els diccionaris de Python permeten enmagatzemar valors associats a claus.
 
 
 ## Exemple
