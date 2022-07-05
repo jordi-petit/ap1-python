@@ -206,20 +206,40 @@ print(solve(1000000))  # hauria d'escriure 837799
 
 Potser caldria trobar alguna manera de reflectir l'eficiència de diccionaris i conjunts.
 
-⏰ Per exemple, mesurar la diferència de temps entre
+⏰ Per exemple:
 
 ```python
-n = valor gros
-L = list(range(n))
-print(x in L)
+import time
+
+n = 10000000
+
+L = [i for i in range(n)]
+S = set(L)
+
+t1 = time.time()
+for x in L:
+    if x == n:
+        break
+t2 = time.time()
+print(t2 - t1)
+
+t1 = time.time()
+n in L
+t2 = time.time()
+print(t2 - t1)
+
+t1 = time.time()
+n in S
+t2 = time.time()
+print(t2 - t1)
 ```
 
-vs 
+Al meu ordinador dóna:
 
-```python
-n = valor gros
-s = set(range(n))
-print(x in s)
-```
+|temps|
+|---|
+|0.5582611560821533|
+|0.12282919883728027|
+|0.0000002145767211|
 
 
