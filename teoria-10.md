@@ -6,11 +6,9 @@ Els conjunts de Python permeten enmagatzemar conjunts finits d'elements. L'ordre
 ## Exemple
 
 ```pycon
->>> a = {'Anna', 'Berta', 'Carla'}
+>>> a: set[str] = {'Anna', 'Berta', 'Carla'}
 >>> a
 {'Carla', 'Berta', 'Anna'}
->>> type(a)
-<class 'set'>
 >>> len(a)
 3
 >>> 'Berta' in s
@@ -30,15 +28,23 @@ Anna
 {'Berta', 'Anna'}
 ```
 
+## Declaració de tipus
+
+```python
+s1: set[int]
+s2: set[str]
+s3: set[set[str]]
+```
+
 ## Operacions bàsiques
 
-- `s = {x1, x2, ...}`: crea un conjunt amb elements `x1`, `x2`, ...
+- `{x1, x2, ...}`: crea un conjunt amb elements `x1`, `x2`, ... Si es vol el conjunt buit cal fer `set()` perquè `{}` és el diccionari buit.
 
-- `s = set(L)`: crea un conjunt amb els elements de la llista `L`.
+- `set(L)`: crea un conjunt amb els elements de la llista `L`.
 
 - `len(s)`: retorna el cardinal del conjunt `s`. 
 
-- `s.add(x)`:  afegir l'element `x` al conjunt `s`.
+- `s.add(x)`:  afegeix l'element `x` al conjunt `s`.
 
 - `s.erase(x)`:  esborra l'element `x` del conjunt `s` (s'enfada si no hi és).
 
@@ -67,7 +73,7 @@ Anna
 ## Trobar totes les paraules úniques d'un fitxer
 
 ```python
-s: set[int] = set()
+s: set[str] = set()
 w = scan(str)
 while w is not None:
     s.add(w)
@@ -77,17 +83,29 @@ for w in sorted(s):
 ```
 
 
+## Conjunts per comprensió
+
+```pycon
+>>> {2**n for n in range(9)}
+{32, 1, 2, 64, 4, 128, 256, 8, 16}
+>>> {str(i) for i in {2,3,4,5,6} if i % 2 == 0}
+{'4', '6', '2'}
+>>> {(m, n) for n in range(2) for m in range(3)}
+{(0, 1), (2, 1), (0, 0), (1, 1), (2, 0), (1, 0)}
+```
+
+
 
 # 10b · Diccionaris
 
 
-Els conjunts de Python permeten enmagatzemar valors associats a claus de forma eficient.
+Els diccionaris de Python permeten enmagatzemar valors associats a claus de forma eficient.
 
 
 ## Exemple
 
 ```pycon
->>> d = {'gat': 'cat', 'gos': 'dog', 'tortuga': 'turtle'}
+>>> d: dict[str, str] = {'gat': 'cat', 'gos': 'dog', 'tortuga': 'turtle'}
 >>> d
 {'gat': 'cat', 'gos': 'dog', 'tortuga': 'turtle'}
 >>> len(d)
@@ -164,7 +182,7 @@ for w in sorted(d.keys()):
 {1: 1, 2: 4, 3: 9, 4: 16, 5: 25}
 >>> {n: n*n for n in range(1, 6) if n*n % 2 == 0}
 {2: 4, 4: 16}
->>> d = {1:2, 2:3, 3:4}
+>>> d = {1: 2, 2: 3, 3: 4}
 >>> {v:k for k,v in d.items()}
 {2: 1, 3: 2, 4: 3}
 ```
@@ -189,7 +207,7 @@ def update_lengths(lengths: dict[int, int], n: int) -> None:
         update_lengths(lengths, nxt)
         lengths[n] = 1 + lengths[nxt]
 
-def solve(M:int) -> int:
+def solve(M: int) -> int:
     lengths = {1: 1}
     m = 1
     for i in range(2, M + 1):
@@ -239,7 +257,7 @@ Al meu ordinador dóna:
 |temps|
 |---|
 |0.5582611560821533|
-|0.12282919883728027|
-|0.0000002145767211|
+|0.1228291988372802|
+|0.0000021457672111|
 
 
