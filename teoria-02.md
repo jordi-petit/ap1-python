@@ -236,7 +236,7 @@ print(x)
 
 ```python
 n = 13
-for i in range(n):
+for i in range(n + 1):
     print(i)
 ```
 
@@ -244,7 +244,7 @@ for i in range(n):
 
 ```python
 n = 13
-for i in range(n, 2):
+for i in range(1, n + 1, 2):
     print(i)
 ```
 
