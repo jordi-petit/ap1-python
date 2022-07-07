@@ -74,10 +74,9 @@ s3: set[set[str]]
 
 ```python
 s: set[str] = set()
-w = scan(str)
-while w is not None:
+for w in tokens(str):
     s.add(w)
-    w = scan(str)
+
 for w in sorted(s):
     print(w)
 ```
@@ -152,13 +151,12 @@ llop wolf
 
 ```python
 d: dict[str, int] = {}
-w = scan(str)
-while w is not None:
+for w in tokens(str):
     if w not in d:
         d[w] = 1
     else:
         d[w] += 1
-    w = scan(str)
+
 for w in sorted(d):
     print(w, d[w])
 ```
@@ -166,10 +164,9 @@ for w in sorted(d):
 
 ```python
 d: dict[str, int] = {}
-w = scan(str)
-while w is not None:
+for w in tokens(str):
     d[w] =  d.get(w, 0) + 1   # valor per quan clau no hi és
-    w = scan(str)
+
 for w in sorted(d.keys()):
     print(w, d[w])
 ```

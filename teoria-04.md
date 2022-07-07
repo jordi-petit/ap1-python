@@ -29,7 +29,7 @@ while x >= 0:
 print(s / n)
 ```
 
-### Fins que s'acabin   
+### Fins que s'acabin (amb scan)
 
 ```python
 s = 0.0
@@ -43,6 +43,20 @@ print(s / n)
 ```
 
 Explicar <kbd>control</kbd><kbd>D</kbd>.
+
+
+### Fins que s'acabin (amb tokens)
+
+```python
+s = 0.0
+n = 0
+for x in tokens(float):     # yogi!
+    s += x
+    n = n + 1
+print(s / n)
+```
+
+Aquesta manera és més consisa i preferible a l'anterior. Però cal també saber fer anar l'anterior perquè aquesta és menys potent.
 
 
 ## Màxim d'una seqüència no buida de reals
@@ -69,7 +83,7 @@ while x >= 0:
 print(m)
 ```
 
-### Fins que s'acabin   
+### Fins que s'acabin (amb scan)
 
 ```python
 m = read(float)    
@@ -80,15 +94,22 @@ while x is not None:
 print(m)
 ```
 
+### Fins que s'acabin (amb tpkens)
+
+```python
+m = read(float)      
+for x in tokens(float)
+    m = max(m, x)
+print(m)
+```
+
 ## Comptar quantes paraules "casa" hi ha en un fitxer de text
 
 ```python
 c = 0
-x = scan(str)    
-while x is not None:
+for x in tokens(str):
     if x == 'casa':
         c = c + 1
-    x = scan(str)
 print(c)
 ```
 
@@ -130,8 +151,21 @@ def conté(paraula: str) -> Bool:
     while x is not None:
         if x == 'casa':
             return True
+        x = scan(str) 
     return False
 ```
+
+I amb `tokens` encara millor:
+
+```python
+def conté(paraula: str) -> Bool:
+    """indica si l'entrada conté paraula"""
+    for x in tokens(str):
+        if x == 'casa':
+            return True
+    return False
+```
+
 
 ## Recorreguts i cerques
 
@@ -177,13 +211,11 @@ sequence of repetitions of the first string.
 first = read(str)
 length = 1  # Length of the current subsequence
 longest = 1 # Length of the longest subsequence
-current = scan(str)
-while current is not None:
+for current in tokens(str):
     if first != current:
         length = 0
     else:
         length = length + 1
         longest = max(longest, length)
-    current = scan(str)
 print(longest)
 ```

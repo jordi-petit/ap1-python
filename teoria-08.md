@@ -152,10 +152,8 @@ from yogi import *
 
 # desar tota la seqüència en una llista
 L = []
-x = scan(int)
-while x is not None:
+for x in tokens(int):
     L.append(x)
-    x = scan(int)
 
 # comptar aparicions del darrer element
 n = 0
@@ -172,10 +170,8 @@ from yogi import *
 
 def llegir_llista() -> list[int]:
     L = []
-    x = scan(int)
-    while x is not None:
+    for x in tokens(int):
         L.append(x)
-        x = scan(int)
     return L
 
 def ocurrencies(L: list[int], elem: int) -> int:
