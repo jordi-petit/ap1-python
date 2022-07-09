@@ -6,7 +6,8 @@ Programa per resoldre sudokus.
 from dataclasses import dataclass
 from typing import Optional
 from yogi import read
-
+import curses
+import time
 
 Graella = list[list[Optional[int]]]
 """Graella 9x9 per desar els valors (de 0 a 8 o None per "no se sap")."""
@@ -15,11 +16,14 @@ Graella = list[list[Optional[int]]]
 Usats = list[set[int]]
 """Vector de 9 subconjunts de {0..8} per indicar els valors usats."""
 
+win: curses.window
+
 
 @dataclass
 class Sudoku:
     """Classe per mantenir la informació d'un sudoku en construcció."""
 
+    original: Graella  # la graella original
     graella: Graella  # la graella principal
     files: Usats  # conflictes per files
     columnes: Usats  # conflictes per columnes
@@ -29,11 +33,12 @@ class Sudoku:
 def crea() -> Sudoku:
     """Retorna un sudoku buit."""
 
+    original: Graella = [[None for _ in range(9)] for _ in range(9)]
     graella: Graella = [[None for _ in range(9)] for _ in range(9)]
     files: Usats = [set() for _ in range(9)]
     columnes: Usats = [set() for _ in range(9)]
     caixes: Usats = [set() for _ in range(9)]
-    return Sudoku(graella, files, columnes, caixes)
+    return Sudoku(original, graella, files, columnes, caixes)
 
 
 def llegir() -> Sudoku:
@@ -44,22 +49,39 @@ def llegir() -> Sudoku:
         for j in range(9):
             v = read(str)
             if v != '.':
-                ok = escriure_casella(s, i, j, int(v) - 1)
+                ok = marcar_casella(s, i, j, int(v) - 1)
                 assert ok
+                s.original[i][j] = int(v) - 1
     return s
 
 
-def escriure(S: Sudoku) -> None:
+def escriure(s: Sudoku) -> None:
     for i in range(9):
         for j in range(9):
-            v = S.graella[i][j]
+            v = s.graella[i][j]
             assert v is not None
             print(v + 1, end=' ')
         print()
 
 
-def escriure_casella(s: Sudoku, i: int, j: int, v: int) -> bool:
-    """Si es pot escriure v en s[i][j] ho fa i retorna cert, sinó retorna fals."""
+def mostrar(s: Sudoku) -> None:
+    win.move(0, 0)
+    for i in range(9):
+        for j in range(9):
+            v = s.graella[i][j]
+            if v is None:
+                win.addstr(i, j * 2, '.')
+            else:
+                if s.original[i][j] == None:
+                    win.addstr(i, j * 2, str(v + 1))
+                else:
+                    win.addstr(i, j * 2, str(v + 1), curses.A_BOLD)
+    win.refresh()
+    time.sleep(0.001)
+
+
+def marcar_casella(s: Sudoku, i: int, j: int, v: int) -> bool:
+    """Si es pot posar el valor v en s[i][j] ho fa i retorna cert, sinó retorna fals."""
 
     if v in s.files[i] or v in s.columnes[j] or v in s.caixes[caixa(i, j)]:
         return False
@@ -67,11 +89,12 @@ def escriure_casella(s: Sudoku, i: int, j: int, v: int) -> bool:
     s.columnes[j].add(v)
     s.caixes[caixa(i, j)].add(v)
     s.graella[i][j] = v
+    mostrar(s)
     return True
 
 
-def esborra_casella(s: Sudoku, i: int, j: int) -> None:
-    """Esborra el valor de s[i][j]."""
+def desmarcar_casella(s: Sudoku, i: int, j: int) -> None:
+    """Treu el valor de s[i][j]."""
 
     v = s.graella[i][j]
     assert v is not None
@@ -79,6 +102,7 @@ def esborra_casella(s: Sudoku, i: int, j: int) -> None:
     s.columnes[j].remove(v)
     s.caixes[caixa(i, j)].remove(v)
     s.graella[i][j] = None
+    mostrar(s)
 
 
 def caixa(i: int, j: int) -> int:
@@ -110,15 +134,19 @@ def resol_rec(s: Sudoku, i: int, j: int) -> bool:
     else:
         # provar tots els possibles valors
         for v in range(9):
-            if escriure_casella(s, i, j, v):
+            if marcar_casella(s, i, j, v):
                 if resol_rec(s, seg_i, seg_j):
                     return True
-                esborra_casella(s, i, j)
+                desmarcar_casella(s, i, j)
         return False
 
 
-def main() -> None:
+def main(stdscr: curses.window) -> None:
     """Programa principal."""
+
+    global win
+    win = stdscr
+    curses.use_default_colors()
 
     s = llegir()
     if resol(s):
@@ -128,4 +156,4 @@ def main() -> None:
 
 
 if __name__ == '__main__':
-    main()
+    curses.wrapper(main)
