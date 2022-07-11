@@ -6,7 +6,7 @@ Programa per resoldre sudokus.
 from dataclasses import dataclass
 from typing import Optional
 from yogi import read
-import curses
+import blessings
 import time
 
 Graella = list[list[Optional[int]]]
@@ -16,7 +16,9 @@ Graella = list[list[Optional[int]]]
 Usats = list[set[int]]
 """Vector de 9 subconjunts de {0..8} per indicar els valors usats."""
 
-win: curses.window
+
+term = blessings.Terminal()
+"""Per tenir coloraines i poder moure el cursor pel terminal."""
 
 
 @dataclass
@@ -65,19 +67,16 @@ def escriure(s: Sudoku) -> None:
 
 
 def mostrar(s: Sudoku) -> None:
-    win.move(0, 0)
     for i in range(9):
         for j in range(9):
             v = s.graella[i][j]
             if v is None:
-                win.addstr(i, j * 2, '.')
+                print(term.move(i, j*2) + '.')
+            elif s.original[i][j] == None:
+                print(term.move(i, j*2) + str(v + 1))
             else:
-                if s.original[i][j] == None:
-                    win.addstr(i, j * 2, str(v + 1))
-                else:
-                    win.addstr(i, j * 2, str(v + 1), curses.A_BOLD)
-    win.refresh()
-    time.sleep(0.001)
+                print(term.move(i, j*2) + term.bold(str(v + 1)))
+    # time.sleep(0.01)
 
 
 def marcar_casella(s: Sudoku, i: int, j: int, v: int) -> bool:
@@ -141,12 +140,10 @@ def resol_rec(s: Sudoku, i: int, j: int) -> bool:
         return False
 
 
-def main(stdscr: curses.window) -> None:
+def main() -> None:
     """Programa principal."""
 
-    global win
-    win = stdscr
-    curses.use_default_colors()
+    print(term.clear() + term.hide_cursor())
 
     s = llegir()
     if resol(s):
@@ -156,4 +153,4 @@ def main(stdscr: curses.window) -> None:
 
 
 if __name__ == '__main__':
-    curses.wrapper(main)
+    main()
