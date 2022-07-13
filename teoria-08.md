@@ -89,6 +89,23 @@ Amb les *slices* es creen noves llistes:
 [50, 50, 20, 70]
 ```
 
+També es poden usar per modificar (i extendre) segments de llistes existents:
+
+```pycon
+>>> L = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+>>> L[2:5] = [33, 66, 99]
+>>> L
+[1, 2, 33, 66, 99, 6, 7, 8, 9]
+```
+
+```pycon
+>>> L = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+>>> L[8:] = [33, 66, 99]
+>>> L
+[1, 2, 3, 4, 5, 6, 7, 8, 33, 66, 99]
+```
+
+
 ### Afegir/treure elements
 
 ```pycon
@@ -342,6 +359,15 @@ def posicio(v: list[int], x: int) -> Optional[int]:
     return None
 ```
 
+Els pitonistes trobarien ho voldrien així:
+
+```python
+def posicio(v: list[int], x: int) -> Optional[int]:
+    for index, value in enumerate(v):
+        if value == x:
+            return index 
+    return None
+```
 
 ## Cerca binària
 
@@ -383,20 +409,89 @@ def ordenat(v: list[int]) -> bool:
 
 ## Ordenació per selecció
 
-...
+```python
+def ordenació_per_selecció(L: list[int]) -> None:
+    n = len(L)
+    for i in range(n - 1):
+        p = posició_mínim(L, i)
+        L[i], L[p] = L[p], L[i]
+
+
+def posició_mínim(L: list[int], i: int) -> int:
+    p = i
+    for j in range(i + 1, len(L)):
+        if L[j] < L[p]:
+            p = j
+    return p
+```
 
 ## Ordenació per inserció
 
-...
+```python
+def ordenació_per_inserció(L: list[int]) -> None:
+    n = len(L)
+    for i in range(1, n):
+        inserir(L, i)
+
+
+def inserir(L: list[int], i: int) -> None:
+    """Sabent que L[:i] està ordenada, deixa L[:i+1] ordenada."""
+    x = L[i]
+    j = i
+    while j >= 0 and L[j - 1] > x:  # l'ordre de l'and és important
+        L[j] = L[j - 1]
+        j = j - 1
+    L[j] = x
+```
 
 
 ## Fusió de llistes ordenades
 
-...
+```python
+def fusió(l1: list[int], l2: list[int]) -> list[int]:
+    assert ordenat(l1) and ordenat(l2)
+    r = []
+    i1, i2 = 0, 0
+    while i1 < len(l1) and i2 < len(l2):
+        if l1[i1] <= l2[i1]:
+            r.append(l1[i1])
+            i1 += 1
+        else:
+            r.append(l2[i2])
+            i2 += 1
+    r.extend(l1[i1:])
+    r.extend(l2[i2:])
+    return r
+```
 
 ## Ordenació per fusió
 
-...
+```python
+def ordenació_per_fusió(L: list[int]) -> None:
+    ordenació_per_fusió_rec(L, 0, len(L) - 1)
+
+
+def ordenació_per_fusió_rec(L: list[int], e: int, d: int) -> None:
+    if e < d:
+        m = (e + d) // 2
+        ordenació_per_fusió_rec(L, e, m)
+        ordenació_per_fusió_rec(L, m + 1, d)
+        fusiona(L, e, m, d)
+
+
+def fusiona(L: list[int], e: int, m: int, d: int) -> None:
+    t = []
+    i, j = e, m + 1
+    while i <= m and j <= d:
+        if L[i] <= L[j]:
+            t.append(L[i])
+            i += 1
+        else:
+            t.append(L[j])
+            j += 1
+    L[d - (m - i + 1): d + 1] = L[i: m - 1]
+    L[e: j] = t
+```
 
 
 
