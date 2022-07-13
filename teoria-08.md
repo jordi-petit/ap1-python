@@ -495,6 +495,20 @@ def fusiona(L: list[int], e: int, m: int, d: int) -> None:
 
 
 
+## Ordenació genèrica
+
+```python
+from typing import TypeVar
+
+T = TypeVar('T')
+
+def ordenació1(L: list[T]) -> None:
+    ...
+
+def ordenació2(L: list[T]) -> list[T]:
+    ...
+```
+
 ## `sorted` i `sort`
 
 Donada una llista `L`, `sorted(L)` retorna la llista ordenada de petit a gran. `L.sort()` ordena la llista:
