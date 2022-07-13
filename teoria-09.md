@@ -198,4 +198,75 @@ Hora(hores=10, minuts=10, segons=11)
 Hora(hores=10, minuts=10, segons=11)
 ```
 
-No he trobat cap manera _senzilla_ de clonar.
+
+## Ordenació amb `key`
+
+```python
+@dataclass
+class Hora:
+    hores: int
+    minuts: int
+    segons: int
+
+def nombre_de_segons(h: Hora):
+    return h.segons + h.minuts * 60 + h.hores * 60 * 60
+```
+
+
+```pycon
+>>> L = [Hora(15,30,0), Hora(14,49,59), Hora(15,30,0), Hora(9,0,0)]
+>>> sorted(L)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: '<' not supported between instances of 'Hora' and 'Hora'
+>>> sorted(L, key=nombre_de_segons)
+[Hora(hores=9, minuts=0, segons=0), Hora(hores=14, minuts=49, segons=59), Hora(hores=15, minuts=30, segons=0), Hora(hores=15, minuts=30, segons=0)]
+```
+
+
+
+## Ordenació amb `cmp_to_key`
+
+P33147: Donada una llista de rectangles, cadascun definit amb la seva amplada i la seva alçada, ordener-la de la manera següent: Com a primer criteri, de petit a gran en funció de l’àrea. En cas d’empat, de gran a petit en funció del perímetre. En cas d’un altre empat, primer el rectangle amb menys amplada.
+
+```python
+from dataclasses import dataclass
+from functools import cmp_to_key
+
+
+@dataclass
+class Rectangle:
+    amplada: int
+    alçada: int
+
+# La funció de comparació, donats dos rectangles ha de retornar:
+#   - un valor negatiu si el primer és inferior al segon
+#   - zero si el primer és igual al segon
+#   - un valor positiu si el primer és superior al segon
+
+
+def comp(r1: Rectangle, r2: Rectangle) -> int:
+    a1 = r1.amplada * r1.alçada
+    a2 = r2.amplada * r2.alçada
+    if a1 != a2:
+        return a1 - a2
+
+    p1 = r1.amplada + r1.alçada
+    p2 = r2.amplada + r2.alçada
+    if p1 != p2:
+        return p2 - p1
+
+    return r1.amplada - r2.amplada
+
+
+L = [
+    Rectangle(20, 1),
+    Rectangle(2, 4),
+    Rectangle(6, 6),
+    Rectangle(4, 9),
+    Rectangle(20, 1),
+    Rectangle(9, 4),
+]
+
+print(sorted(L, key=cmp_to_key(comp)))
+```

@@ -399,3 +399,52 @@ def ordenat(v: list[int]) -> bool:
 ...
 
 
+
+## `sorted` i `sort`
+
+Donada una llista `L`, `sorted(L)` retorna la llista ordenada de petit a gran. `L.sort()` ordena la llista:
+
+```pycon
+>>> L = [6, -2, 4, -3, 2, 4, 6, 9, 1]
+>>> sorted(L)
+[-3, -2, 1, 2, 4, 4, 6, 6, 9]
+>>> L.sort()
+>>> L
+[-3, -2, 1, 2, 4, 4, 6, 6, 9]
+```
+
+Amb el paràmetre `reverse` es pot indicar que es vol de gran a petit:
+
+```pycon
+>>> L = [6, -2, 4, -3, 2, 4, 6, 9, 1]
+>>> sorted(L, reverse=True)
+[9, 6, 6, 4, 4, 2, 1, -2, -3]
+```
+
+Amb el paràmetre `key` es pot indicar quina funció aplicar a cada element per obtenir-ne el seu ordre.
+
+```pycon
+>>> L = [6, -2, 4, -3, 2, 4, 6, 9, 1]
+>>> sorted(L, key=abs)
+[1, -2, 2, -3, 4, 4, 6, 6, 9]
+```
+
+```pycon
+>>> L = 'La Rosa porta la rosa'.split()
+>>> L
+['La', 'Rosa', 'porta', 'la', 'rosa']
+>>> sorted(L)
+['La', 'Rosa', 'la', 'porta', 'rosa']
+>>> sorted(L, key=str.lower)
+['La', 'la', 'porta', 'Rosa', 'rosa']
+```
+
+```
+>>> sorted('Àgata Abel Èric Enric'.split())
+['Abel', 'Enric', 'Àgata', 'Èric']
+>>> sorted('Àgata Abel Èric Enric'.split(), key=locale.strxfrm)
+['Abel', 'Enric', 'Àgata', 'Èric']
+```
+
+`locale.strxfrm`: Transforms a string to one that can be used in locale-aware comparisons. 
+
