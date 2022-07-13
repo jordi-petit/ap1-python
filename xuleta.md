@@ -148,6 +148,9 @@ Funcions predefinides:
 
 ...
 
+reversed
+sorted
+
 
 ## Conversions
 
@@ -164,4 +167,25 @@ Funcions predefinides:
 123
 >>> float('123')
 123.0
+```
+
+## Llistes
+
+
+```pycon
+>>> llista = [50, 24, 50, 12]
+>>> llista
+[50, 24, 50, 12]
+>>> reversed(llista)
+<list_reverseiterator object at 0x7fedf6a28d60>
+>>> list(reversed(llista))
+[12, 50, 24, 50]
+>>> sorted(llista)
+[12, 24, 50, 50]
+>>> for x in llista: print(x)
+...
+50
+24
+50
+12
 ```
