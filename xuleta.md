@@ -84,7 +84,7 @@ Per acabar l'entrada al terminal cal picar <kbd>Control</kbd> + <kbd>D</kbd> en 
 
 ## Operadors 
 
-| operador | significat |
+|operador|significat|
 |----|----|
 | `+` | suma, concatenació |
 | `-` | resta, canvi de signe |
