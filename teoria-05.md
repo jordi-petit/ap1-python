@@ -88,11 +88,11 @@ hanoi(5, 'A', 'B', 'C')
 
 ### Evaluar expressió prefixada
 
-L'entrada és un text del tipus + 2 * 3 5 (=17).
+L'entrada és un text del tipus `+ 2 * 3 5` (=17).
 
 ```python
 def eval() -> int:
-    op = read()
+    op = read(str)
     if op == '+':
         return eval() + eval()
     elif op == '-':

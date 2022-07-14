@@ -5,7 +5,7 @@
 
 ## Funcions 
 
-### màxim2 
+### màxim de dos enters 
 
 ```python
 def màxim2(x: int, y: int) -> int:
@@ -21,7 +21,7 @@ m = màxim2(a, b)
 print(m)
 ```
 
-### màxim3 
+### màxim de tres enters
 
 ```python
 def màxim2(x: int, y: int) -> int:
@@ -48,6 +48,7 @@ print(m)
 ```python
 def factorial(n: int) -> int:
     """donat un natural retorna el seu factorial"""
+    assert n >= 0
     f = 1
     for i in range(2, n + 1):
         f = f * i
@@ -60,7 +61,7 @@ Lenta:
 
 ```python
 def es_primer(n: int) -> bool:
-    """donat un natural retorna si és o no primer"""
+    """donat un enter retorna si és o no primer"""
     if n <= 1:
         return False 
     for d in range(2, n):
@@ -75,7 +76,7 @@ Ràpida:
 
 ```python
 def es_primer(n: int) -> bool:
-    """donat un natural retorna si és o no primer"""
+    """donat un enter retorna si és o no primer"""
     if n <= 1:
         return False 
     d = 2
@@ -143,17 +144,17 @@ False
 
 ```python
 def escriure_rectangle(files: int, columnes: int, caràcter: str) -> None:
-    """escriu un rectangle de mida files⨉columnes utilitzant caràcter"""
+    """escriu un rectangle de mida files ⨉ columnes utilitzant caràcter"""
     for i in range(files):
         print(caràcter * columnes)
 
 def escriure_quadrat(mida: int, caràcter: str) -> None:
-    """escriu un rectangle de mida mida⨉mida utilitzant caràcter"""
+    """escriu un rectangle de mida mida ⨉ mida utilitzant caràcter"""
     escriure_rectangle(mida, mida, caràcter)
 
 escriure_rectangle(3, 3, 'O')
 print()
-escriure_quadrat(3, 'O')
+escriure_quadrat(3, '🟣')
 ```
 
 
@@ -185,28 +186,32 @@ def escriure_del_revés(n: int) -> None:
 ### Pintar un quadrat amb turtle
 
 ```python
-def pintar_quadrat(mida: int) -> None:
+def pintar_quadrat(mida: float) -> None:
     for _ in range(4):
         forward(mida)
         left(90)
+```
 
-# aplicació: pintar molts quadrats rotats
-rotacions = 12
-for _ in range(rotacions):
-    pintar_quadrat(100)
-    right(360 / rotacions)
+
+### Pintar molts quadrats rotats
+
+```python
+def pintar_quadrats_rotats(mida: float, rotacions: int) -> None:
+    for _ in range(rotacions):
+        pintar_quadrat(mida)
+        right(360 / rotacions)
 ```
 
 
 ### Pintar un polígon regular amb turtle
 
 ```python
-def pintar_polígon_regular(mida: int, costats: int) -> None:
+def pintar_polígon_regular(mida: float, costats: int) -> None:
     for _ in range(costats):
         forward(mida)
         left(360 / mida)
 
-def pintar_quadrat(mida: int) -> None:
+def pintar_quadrat(mida: float) -> None:
     pintar_polígon_regular(mida, 4)
 ```
 
@@ -243,7 +248,7 @@ def sumar_un_segon(h: int, m: int, s: int) -> tuple[int, int, int]:
                 h = 0
     return h, m, s
 
-# i ara ja es pot instroduir l'assignació múltiple:
+# i ara ja es pot introduir l'assignació múltiple:
 h, m, s = 23, 59, 59
 h, m, s = sumar_un_segon(h, m, s)
 print(h, m, s)

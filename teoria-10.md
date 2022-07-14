@@ -220,7 +220,7 @@ print(solve(1000000))  # hauria d'escriure 837799
 
 ## Eficiència
 
-Potser caldria trobar alguna manera de reflectir l'eficiència de diccionaris i conjunts.
+Caldria trobar alguna manera de reflectir l'eficiència de diccionaris i conjunts.
 
 ⏰ Per exemple:
 

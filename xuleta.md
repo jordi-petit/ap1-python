@@ -1,22 +1,20 @@
 # Xuleta de Python d'AP1
 
-## Escriptura
+## Escriptura amb `print`
 
-S'escriu amb `print()`. Els paràmetres donats es separen amb el paràmetre `sep` (un espai de per defecte) i al final s'afageix el paràmetre `end` (un salt de línia per defecte).
+Els paràmetres donats es separen amb el paràmetre `sep` (un espai de per defecte) i al final s'afageix el paràmetre `end` (un salt de línia per defecte).
 
 ```python
-print(10, 20, 30, sep=';', end='.')
+print(10, 'XY', 30, sep=';', end='.')
 ```
 
-escriu `10;20;30.` (sense salt de línia).
+escriu `10;XY;30.` (sense salt de línia).
 
-## Lectura
+## Lectura amb `yogi`
 
-S'usen aquestes funcions del mòdul `yogi`:
-
-- `read()`: retorna el següent element de l'entrada (error si no hi és).
-- `scan()`: retorna el següent element de l'entrada o `None` si no hi és.
-- `tokens()`: en un bucle `for`, retorna el següent element de l'entrada o para el bucle quan n'ho n'hi ha més.
+- `read()`: retorna l'element següent de l'entrada (error si no hi és).
+- `scan()`: retorna l'element següent de l'entrada o `None` si no hi és.
+- `tokens()`: en un bucle `for`, retorna l'element següent de l'entrada o para el bucle quan n'ho n'hi ha més.
 
 ```python 
 from yogi import read
@@ -50,7 +48,7 @@ Els tipus llegibles són `int`, `float` i `str`.
 
 Per acabar l'entrada al terminal cal picar <kbd>Control</kbd> + <kbd>D</kbd> en Linux o Mac OS i <kbd>Control</kbd> + <kbd>Z</kbd> en Windows.
 
-## Format de textos
+## Format de textos amb `f-strings`
 
 ```pycon
 >>> nom, cognom = 'James', 'Bond'
@@ -82,6 +80,16 @@ Per acabar l'entrada al terminal cal picar <kbd>Control</kbd> + <kbd>D</kbd> en 
 '##############Python'
 ```
 
+```pycon
+>>> n = 123
+>>> f'{n:>20}'
+'                 123'
+>>> f'{n:<20}'
+'123                 '
+>>> f'{n:0>20}'
+'00000000000000000123'
+```
+
 ## Operadors 
 
 |operador|significat|
@@ -92,7 +100,7 @@ Per acabar l'entrada al terminal cal picar <kbd>Control</kbd> + <kbd>D</kbd> en 
 | `/` | divisió real |
 | `**` | potència |
 | `//` | divisió entera |
-| `#` | rest de la divisió entera |
+| `#` | rest de la divisió entera (mòdul) |
 | `==` | igual |
 | `!=` | diferent |
 | `<` | menor estricte |

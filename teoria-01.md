@@ -14,7 +14,7 @@ print('Hola!')
 ```python
 # programa que escriu Hola i Adéu (amb una emoticona)
 print('Hola!')
-print('👋 Adéu!')
+print('Adéu! 👋')
 ```
 
 ### Programa que pinta un triangle amb la tortuga
@@ -105,7 +105,7 @@ from yogi import *
 
 a = read(int)
 b = read(int)
-if a > b:
+if a >= b:
     m = a
 else:
     m = b
@@ -181,6 +181,18 @@ print(h, m, s)
 ```
 
 
+### Increment
+
+```pycon
+>>> i = 2
+>>> i
+2
+>>> i = i + 1
+>>> i
+3
+```
+
+
 ### Intercanvi
 
 ```pycon
@@ -202,20 +214,10 @@ print(h, m, s)
 2
 ```
 
-### Increment
-
-```pycon
->>> i = 2
->>> i
-2
->>> i = i + 1
->>> i
-3
-```
 
 ### Operadors relacionals
 
-```
+```python
 ==
 !=
 <
@@ -243,7 +245,7 @@ False
 
 ### Operadors lògics
 
-```
+```python
 not 
 and 
 or

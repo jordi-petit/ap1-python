@@ -43,7 +43,7 @@
 - `sum()` retorna la suma dels elements de la llista
 - `max()` retorna el màxim dels elements de la llista
 - `min()` retorna el mínim dels elements de la llista
-- `list(reversed())` retorna la llista del revés(explicar el `list()` del putu python).
+- `reversed()` retorna la llista del revés(explicar el `list()` del putu python).
 - `sorted(llista)` retorna la llista ordenada.
 
 
@@ -93,9 +93,9 @@ També es poden usar per modificar (i extendre) segments de llistes existents:
 
 ```pycon
 >>> L = [1, 2, 3, 4, 5, 6, 7, 8, 9]
->>> L[2:5] = [33, 66, 99]
+>>> L[2:5] = [33, 44, 55]
 >>> L
-[1, 2, 33, 66, 99, 6, 7, 8, 9]
+[1, 2, 33, 44, 55, 6, 7, 8, 9]
 ```
 
 ```pycon
@@ -120,7 +120,7 @@ També es poden usar per modificar (i extendre) segments de llistes existents:
 >>> xs.extend(ys)
 >>> xs
 [10, 20, 30, 40, 50, 60, 70, 80]
->>> del(xs[3])   lent! 
+>>> del(xs[3])  # lent! 
 >>> xs
 [10, 20, 30, 50, 60, 70, 80]
 >>> xs.pop()    # ràpid
@@ -160,6 +160,19 @@ False
 [0, 6, 12, 18]
 >>> [0 for _ in range(10)]
 [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+```
+
+Tripletes pitagòriques:
+
+```pycon
+>>> n = 25
+>>> [   (a, b, c)
+...     for a in range(1, n + 1)
+...     for b in range(a, n + 1)
+...     for c in range(b, n + 1)
+...     if a**2 + b**2 == c**2
+... ]
+[(3, 4, 5), (5, 12, 13), (6, 8, 10), (7, 24, 25), (8, 15, 17), (9, 12, 15), (12, 16, 20), (15, 20, 25)]
 ```
 
 ## Nombre d'elements iguals al darrer
@@ -202,6 +215,13 @@ L = llegir_llista()
 print(ocurrencies(L, L[-1]))
 ```
 
+A sac! 😂
+
+```python
+L = list(tokens(int))
+print(L.count(L[-1]))
+```
+
 ## Producte escalar i mòdul
 
 ```python
@@ -221,6 +241,23 @@ print(producte_escalar(v1, v2))
 print(modul(v1))
 ```
 
+Amb `zip`: ???
+
+```python
+def producte_escalar(x: list[float], y: list: [float]) -> float:
+    s = 0.0
+    for a,b in zip(x, y):
+        s += a * b
+    return s
+```
+
+Amb llistes per comprensió:
+
+```python
+def producte_escalar(x: list[float], y: list: [float]) -> float:
+    return sum(a * b for a, b in zip(x, y))
+```
+
 ## Algorisme d'Erastotenes 
 
 Trobar tots els primers fins a un nombre donat.
@@ -228,27 +265,22 @@ Trobar tots els primers fins a un nombre donat.
 
 ```python
 def eratostenes(n: int) -> list[bool]:
-    """Retorna un vector g de n+1 booleans tal que g[i] indica si i és o no és primer. Prec: n >= 2."""
+    """Retorna una llista de n+1 booleans tal que el valor a la posició i indica si i és o no és primer. Prec: n >= 2."""
     assert n >= 2
-    g = [True] * n
-    g[0], g[1] = False, False
+    garbell = [False, False] + [True] * (n - 2)
     i = 2
     while i * i <= n:
-        if g[i]:
-            for j in range(2*i, n+1, i):
-                g[j] = False
+        if garbell[i]:
+            for j in range(2 * i, n + 1, i):
+                garbell[j] = False
         i += 1
-    return g
+    return garbell
 
 def primers(n: int) -> list[int]:
-    """retorna un vector amb tots els nombres primers <= n amb n >= 2."""
+    """retorna una llista amb tots els nombres primers <= n amb n >= 2."""
 
-    g = eratostenes(n)
-    ps: list[int] = []
-    for i in range(2, n+1):
-        if g[i]:
-            ps.append(i)
-    return ps
+    garbell = eratostenes(n)
+    return [i for i in range(n + 1) if garbell[i]]
 
 print(primers(read(int)))
 ```
@@ -259,10 +291,10 @@ print(primers(read(int)))
 Els `str`s són semblants a les llistes. Però són inmutables.
 
 ```python
-def conte_a(text: str, subtext: str, p: int) -> bool:
-    """diu si text conté subtext a la posició p"""
+def conte_a(text: str, subtext: str, pos: int) -> bool:
+    """diu si text conté subtext a la posició pos"""
     for i in range(len(subtext)):
-        if subtext[i] != text[p + i]:
+        if subtext[i] != text[pos + i]:
             return False
     return True
 
@@ -270,8 +302,8 @@ def conte(text: str, subtext: str) -> bool:
     """diu si text conté subtext"""
     n = len(text)
     m = len(subtext)
-    for p in range(n - m + 1):
-        if conte_a(text, subtext, p):
+    for pos in range(n - m + 1):
+        if conte_a(text, subtext, pos):
             return True
     return False
 ```
@@ -333,8 +365,6 @@ print(b)        # escriu [1, 2, 3, 4]
 ```
 
 
-
-
 ## Split
 
 El mètode `split` dels textos és molt útil: trenca el text en una llista de textos utilitzant un separador (per paraules per defecte):
@@ -352,56 +382,56 @@ El mètode `split` dels textos és molt útil: trenca el text en una llista de t
 ## Cerca lineal
 
 ```python
-def posicio(v: list[int], x: int) -> Optional[int]:
-    for i in range(len(v)):
-        if v[i] == x:
+def posicio(xs: list[int], x: int) -> Optional[int]:
+    for i in range(len(xs)):
+        if xs[i] == x:
             return i 
     return None
 ```
 
-Els pitonistes trobarien ho voldrien així:
+Amb `enumerate`: ???
 
 ```python
-def posicio(v: list[int], x: int) -> Optional[int]:
-    for index, value in enumerate(v):
-        if value == x:
-            return index 
+def posicio(xs: list[int], x: int) -> Optional[int]:
+    for i, v in enumerate(xs):
+        if v == x:
+            return i 
     return None
 ```
 
 ## Cerca binària
 
 ```python
-def posicio(v: list[int], x: int) -> Optional[int]:
-    assert ordenat(v)
-    return posicio_rev(v, x, 0, len(v) - 1)
+def posicio(xs: list[int], x: int) -> Optional[int]:
+    assert ordenat(xs)
+    return posicio_rec(xs, x, 0, len(xs) - 1)
 
-def posicio_rec(v: list[int], x: int, esq: int, dre: int) -> Optional[int]:
+def posicio_rec(xs: list[int], x: int, esq: int, dre: int) -> Optional[int]:
     if esq > dre:
         return None
     else:
         mig = (dre + esq) // 2
-        if x < v[mig]:
-            return posicio_rec(v, x, esq, mig - 1)
-        elif x > v[mig]:
-            return posicio_rec(v, x, mig + 1, dre)
+        if x < xs[mig]:
+            return posicio_rec(xs, x, esq, mig - 1)
+        elif x > xs[mig]:
+            return posicio_rec(xs, x, mig + 1, dre)
         else:
             return mig
 
-def posicio_ite(v: list[int], x: int, esq: int, dre: int) -> Optional[int]:
+def posicio_ite(xs: list[int], x: int, esq: int, dre: int) -> Optional[int]:
     while esq <= dre:
         mig = (dre + esq) // 2
-        if x < v[mig]:
+        if x < xs[mig]:
             dre = mig - 1
-        elif x > v[mig]:
+        elif x > xs[mig]:
             esq = mig + 1
         else:
             return mig
     return None
 
-def ordenat(v: list[int]) -> bool:
-    for i in range(len(v) - 1):
-        if v[i] > v[i + 1]:
+def ordenat(xs: list[int]) -> bool:
+    for i in range(len(xs) - 1):
+        if xs[i] > xs[i + 1]:
             return False
     return True
 ```

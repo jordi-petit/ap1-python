@@ -9,7 +9,7 @@
 n = 13
 
 i = 1
-while i < n:
+while i <= n:
     print(i)
     i = i + 1
 ```
@@ -20,7 +20,7 @@ while i < n:
 n = 13
 
 i = 1
-while i < n:
+while i <= n:
     print(i)
     i = i + 2
 ```
@@ -40,9 +40,10 @@ while n >= 1:
 ```python
 from turtle import *
 
+mida = 100
 i = 1
 while i <= 4:
-    forward(100)
+    forward(mida)
     left(90)
     i = i + 1
 ```
@@ -53,12 +54,12 @@ while i <= 4:
 from turtle import *
 from yogi import *
 
-n = read(int)  # nombre de costats
-m = read(int)  # mida
+costats = read(int)  # nombre de costats
+mida = read(int)  # mida
 i = 1
-while i <= n:
-    forward(m)
-    left(360 / n)
+while i <= costats:
+    forward(mida)
+    left(360 / costats)
     i = i + 1
 ```
 
@@ -106,6 +107,19 @@ if d * d == n:
 
 ⏰ Veure la diferència de temps per un n gran
 
+### Suma dels dígits d'un nombre
+
+```python
+from yogi import *
+
+n = read(int)
+s = 0
+while n != 0:         
+    s = s + n % 10
+    n = n // 10
+print(s)
+```
+
 
 ### Nombre de dígits d'un nombre
 
@@ -123,18 +137,6 @@ else:
 print(d)
 ```
 
-### Suma dels dígits d'un nombre
-
-```python
-from yogi import *
-
-n = read(int)
-s = 0
-while n != 0:         
-    s = s + n % 10
-    n = n // 10
-print(s)
-```
 
 ## Bucles dins de bucles
 
@@ -149,6 +151,12 @@ while i <= 10:
         j = j + 1
     i = i + 1 
     print()
+```
+
+Millor: escriure amb format de text:
+
+```python
+print(f'{i:2d} * {j:2d} = {i * j:3d}')
 ```
 
 ### Pintar n quadrats rotats 
@@ -306,12 +314,12 @@ for i in range(1, n + 1):
 ''
 ```
 
-### Pintar un triangle de smileys amb repeticions de textos
+### Pintar un triangle de rodones amb repeticions de textos
 
 ```python
 from yogi import *
 
 n = read(int)
 for i in range(1, n + 1):
-    print('😀' * i)
+    print('🟣' * i)
 ```

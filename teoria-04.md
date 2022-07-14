@@ -42,7 +42,7 @@ while x is not None:
 print(s / n)
 ```
 
-Explicar <kbd>control</kbd><kbd>D</kbd>.
+Explicar <kbd>control</kbd> <kbd>D</kbd>.
 
 
 ### Fins que s'acabin (amb tokens)
@@ -83,7 +83,7 @@ while x >= 0:
 print(m)
 ```
 
-### Fins que s'acabin (amb scan)
+### Fins que s'acabin (amb `scan`)
 
 ```python
 m = read(float)    
@@ -94,7 +94,7 @@ while x is not None:
 print(m)
 ```
 
-### Fins que s'acabin (amb tpkens)
+### Fins que s'acabin (amb `tokens`)
 
 ```python
 m = read(float)      
@@ -107,8 +107,8 @@ print(m)
 
 ```python
 c = 0
-for x in tokens(str):
-    if x == 'casa':
+for paraula in tokens(str):
+    if paraula == 'casa':
         c = c + 1
 print(c)
 ```
@@ -121,11 +121,11 @@ Correcte però lent:
 
 ```python
 c = 0
-x = scan(str)    
-while x is not None:
-    if x == 'casa':
+paraula = scan(str)    
+while paraula is not None:
+    if paraula == 'casa':
         c = c + 1
-    x = scan(str)
+    paraula = scan(str)
 print(c > 0)
 ```
 
@@ -133,35 +133,35 @@ Parar de llegir quan es troba la primera "casa":
 
 ```python
 trobat = False
-x = scan(str)    
-while not trobat and x is not None:
-    if x == 'casa':
+paraula = scan(str)    
+while not trobat and paraula is not None:
+    if paraula == 'casa':
         trobat = True
     else:
-        x = scan(str)
+        paraula = scan(str)
 print(trobat)
 ```
 
 Amb un funció ja ni cal el booleà:
 
 ```python
-def conté(paraula: str) -> Bool:
-    """indica si l'entrada conté paraula"""
-    x = scan(str)    
-    while x is not None:
-        if x == 'casa':
+def conté(patró: str) -> Bool:
+    """indica si l'entrada conté patró"""
+    paraula = scan(str)    
+    while paraula is not None:
+        if paraula == patró:
             return True
-        x = scan(str) 
+        paraula = scan(str) 
     return False
 ```
 
 I amb `tokens` encara millor:
 
 ```python
-def conté(paraula: str) -> Bool:
-    """indica si l'entrada conté paraula"""
-    for x in tokens(str):
-        if x == 'casa':
+def conté(patró: str) -> Bool:
+    """indica si l'entrada conté patró"""
+    for paraula in tokens(str):
+        if paraula == patró:
             return True
     return False
 ```
@@ -204,8 +204,7 @@ print(p)
 
 ### Longest repeated subsequence
 
-We want to calculate the length of the longest
-sequence of repetitions of the first string.
+We want to calculate the length of the longest sequence of repetitions of the first string.
 
 ```python
 first = read(str)

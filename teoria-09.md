@@ -7,9 +7,9 @@ Les matrius són llistes de llistes.
 
 ```pycon
 M = [
-    [2, 4, 1, 6],
-    [1, 3, 4, 1],
-    [2, 9, 9, -2],
+        [2, 4, 1, 6],
+        [1, 3, 4, 1],
+        [2, 9, 9, -2],
 ]
 ```
 
@@ -27,26 +27,41 @@ Matriu: TypeAlias = list[Fila]
 ```python
 def suma(A: Matriu, B: Matriu) -> Matriu:
     n, m = len(A), len(A[0])
-    C: Matriu = [[0] * n] * m
+    C: Matriu = [[0 for j in range(n)] for i in range(n)] 
     for i in range(n):
         for j in range(m):
             C[i][j] = A[i][j] + B[i][j]
     return C
 ```
 
-Els bucles es poden fer al revés.
+Amb llistes per comprensió:
 
+```python
+def suma(A: Matriu, B: Matriu) -> Matriu:
+    n, m = len(A), len(A[0])
+    return [[A[i][j] + B[i][j] for j in range(m)] for i in range(n)]
+```
+
+(no sembla més llegible...)
 
 ## Matriu simètrica?
 
 ```python
 def es_simetrica(M: Matriu) -> bool:
-    n = len(A)
+    n = len(M)
     for i in range(n):
         for j in range(i + 1, n):
             if M[i][j] != M[j][i]:
                 return False
     return True
+```
+
+Amb `all`: ???
+
+```python
+def es_simetrica(M: Matriu) -> bool:
+    n = len(M)
+    return all(M[i][j] == M[j][i] for i in range(n) for j in range(i + 1, n))
 ```
 
 
@@ -61,12 +76,15 @@ def transposa(M: Matriu) -> None:
             M[i][j], M[j][i] = M[j][i], M[i][j]
 ```
 
+Exercici: fer-ho amb llistes per comprensió.
+
+
 ## Producte de matrius quadrades
 
 ```python
 def producte(A: Matriu, B: Matriu) -> Matriu:
     n = len(A)
-    C: Matriu = [[0] * n] * m
+    C: Matriu = [[0 for j in range(n)] for i in range(n)] 
     for i in range(n):
         for j in range(n):
             for k in range(n):
@@ -75,11 +93,35 @@ def producte(A: Matriu, B: Matriu) -> Matriu:
 ```
 
 
+```python
+def producte(A: Matriu, B: Matriu) -> Matriu:
+    n = len(A)
+    return [
+        [
+            sum(A[i][k] * B[k][j] for k in range(n)) 
+            for j in range(n) 
+        ] 
+        for i in range(n)
+    ]
+```
+
+
+
 ## Cerca en una matriu ordenada
 
 Una matriu ordenada és una matriu on cada fila i cada columna està ordenada creixentment.
 
 ...
+
+
+## Perills
+
+Explicar què passa per sota. Ex:
+
+```python 
+[[0] * m] * n] ❌
+[[0 for j in range(m)] for i in range(n)] ✅
+```
 
 
 # 09b · Estructures
@@ -129,7 +171,7 @@ class Data:
 @dataclass
 class Empleat:
     nom: str
-    sou: float
+    sou: float = 1500
     departament: str
     data_naixament: Optional[Data] = None
 
@@ -140,12 +182,12 @@ class Empresa:
 ```
 
 ```pycon
->>> e1 = Empleat(nom='Anna', sou=2300, departament='Direcció', data_naixament=Data(12, 11, 1999))
+>>> e1 = Empleat(nom='Anna', departament='Direcció', data_naixament=Data(12, 11, 1999))
 >>> e2 = Empleat(nom='Berta', sou=1900, departament='Comptabilitat')
 >>> empresa = Empresa(nom='Betes i fils, SA', empleats=[e1, e2])
 >>> for empleat in empresa.empleats: print(empleat.sou)
 ...
-2300
+1500
 1900
 ```
 
