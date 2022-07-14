@@ -241,22 +241,6 @@ print(producte_escalar(v1, v2))
 print(modul(v1))
 ```
 
-Amb `zip`: ???
-
-```python
-def producte_escalar(x: list[float], y: list: [float]) -> float:
-    s = 0.0
-    for a,b in zip(x, y):
-        s += a * b
-    return s
-```
-
-Amb llistes per comprensió:
-
-```python
-def producte_escalar(x: list[float], y: list: [float]) -> float:
-    return sum(a * b for a, b in zip(x, y))
-```
 
 ## Algorisme d'Erastotenes 
 
@@ -385,16 +369,6 @@ El mètode `split` dels textos és molt útil: trenca el text en una llista de t
 def posicio(xs: list[int], x: int) -> Optional[int]:
     for i in range(len(xs)):
         if xs[i] == x:
-            return i 
-    return None
-```
-
-Amb `enumerate`: ???
-
-```python
-def posicio(xs: list[int], x: int) -> Optional[int]:
-    for i, v in enumerate(xs):
-        if v == x:
             return i 
     return None
 ```
@@ -578,7 +552,7 @@ Amb el paràmetre `key` es pot indicar quina funció aplicar a cada element per 
 ['La', 'la', 'porta', 'Rosa', 'rosa']
 ```
 
-```
+```pycon
 >>> sorted('Àgata Abel Èric Enric'.split())
 ['Abel', 'Enric', 'Àgata', 'Èric']
 >>> sorted('Àgata Abel Èric Enric'.split(), key=locale.strxfrm)

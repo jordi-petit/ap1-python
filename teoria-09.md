@@ -56,15 +56,6 @@ def es_simetrica(M: Matriu) -> bool:
     return True
 ```
 
-Amb `all`: ???
-
-```python
-def es_simetrica(M: Matriu) -> bool:
-    n = len(M)
-    return all(M[i][j] == M[j][i] for i in range(n) for j in range(i + 1, n))
-```
-
-
 ## Transposta
 
 ```python
@@ -287,7 +278,7 @@ class Rectangle:
 #   - un valor positiu si el primer és superior al segon
 
 
-def comp(r1: Rectangle, r2: Rectangle) -> int:
+def comparació(r1: Rectangle, r2: Rectangle) -> int:
     a1 = r1.amplada * r1.alçada
     a2 = r2.amplada * r2.alçada
     if a1 != a2:
@@ -310,5 +301,5 @@ L = [
     Rectangle(9, 4),
 ]
 
-print(sorted(L, key=cmp_to_key(comp)))
+print(sorted(L, key=cmp_to_key(comparació)))
 ```
