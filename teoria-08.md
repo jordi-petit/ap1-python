@@ -242,7 +242,7 @@ print(modul(v1))
 ```
 
 
-## Algorisme d'Erastotenes 
+## Algorisme d'Eratostenes 
 
 Trobar tots els primers fins a un nombre donat.
 
@@ -291,6 +291,14 @@ def conte(text: str, subtext: str) -> bool:
             return True
     return False
 ```
+
+Amb `in`:
+
+```python 
+subtext in text
+```
+
+Podria ser molt més eficient.
 
 
 ## Segment nul més llarg
@@ -372,6 +380,7 @@ def posicio(xs: list[int], x: int) -> Optional[int]:
             return i 
     return None
 ```
+
 
 ## Cerca binària
 
