@@ -15,7 +15,7 @@
 1.  Funcions, accions i tipus 
 
     - [Teoria](teoria-03.md)
-    - Laboratori: `mypy` 
+    - [Laboratori](lab-03.md): `mypy` 
 
 1.  Recorreguts i cerques
 
