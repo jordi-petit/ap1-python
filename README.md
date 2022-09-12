@@ -1,5 +1,7 @@
 # Preparació de les classes d'AP1 en Python
 
+Aquest és el guió de les classes pel professor. 
+
 
 ## Programació setmanal
 
