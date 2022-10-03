@@ -13,7 +13,7 @@ def foo(x: int, y: int) -> int:
 
 ```python
 def bar(msg: str) -> None:
-    print(msg)
+    print("El missatge és:", msg)
 ```
 
 No retornen cap valor, però poden executar altres funcions.
@@ -109,3 +109,6 @@ graph LR;
     Errors --> Corregir;
     Corregir --> id1;
 ```
+
+>
+> Nota: en windows potser hem de fer la crida del mypy així: `python -m mypy <nom del programa.py>`
